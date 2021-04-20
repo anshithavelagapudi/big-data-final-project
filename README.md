@@ -49,7 +49,7 @@ remover = StopWordsRemover()
 stopwords = remover.getStopWords()
 adventuresWordsRDD = wordsAfterCleanedTokensRDD.filter(lambda word: word not in stopwords)
 # removing all the empty spaces from the data
-adventuresRemoveSpaceRDD = lifeAndWorkadventuresWordsRDD.filter(lambda x: x != "")
+adventuresRemoveSpaceRDD = adventuresWordsRDD.filter(lambda x: x != "")
 ```
 ## Step-3:- Process the data
 - In this step, we will pair up each word in file and count it as 1 as an intermediate Key-value pairs and we need to transform the words using reduceByKey() to get the total count of all distinct words. To get back to python, we use collect() and then print the obtained results.
@@ -79,8 +79,11 @@ title = 'Top Words in ' + source
 xlabel = 'Words'
 ylabel = 'Count'
 
-df = pd.DataFrame.from_records(output, columns =[xlabel, ylabel]) 
+df = pd.DataFrame.from_records(output, columns =[ylabel, xlabel]) 
 plt.figure(figsize=(20,4))
 sns.barplot(xlabel, ylabel, data=df, palette="cubehelix").set_title(title)
 ```
+## Result 
 
+![Output after processing the data]()
+![Output after Charting the data]()
