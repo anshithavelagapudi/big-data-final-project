@@ -16,24 +16,21 @@ Process text using Databricks community Edition and pySpark.
 # Steps to follow
 ## Step-1: Data Injection
 - Import all libraries and fetch the data from url
-
-<pre lang="no-highlight"> 
-<code> import urllib.request 
+```python
+import urllib.request 
 stringInURL = "https://www.gutenberg.org/files/74/74-0.txt"
 urllib.request.urlretrieve(stringInURL,"/tmp/adventures.txt")
-</code>
+```
 
 - Relocate the file from temp folder to databricks folder of dbfs
-<pre lang="no-highlight"> 
-<code>
+```python
 dbutils.fs.mv("file:/tmp/adventures.txt","dbfs:/data/adventures.txt")
-</code>
+```
 
 - Transfer the data into Spark using sparkContext
-<pre lang="no-highlight"> 
-<code>
+```python
 adventuresRDD= sc.textFile("dbfs:/data/adventures.txt")
-</code>
+```
 
 ## Step-2: Clean the data
 - Now, we separate the words from each line using flatmap function and to change all the words to lower case and remove the spaces between them
