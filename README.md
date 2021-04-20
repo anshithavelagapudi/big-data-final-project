@@ -51,7 +51,7 @@ adventuresWordsRDD = wordsAfterCleanedTokensRDD.filter(lambda word: word not in 
 # removing all the empty spaces from the data
 adventuresRemoveSpaceRDD = adventuresWordsRDD.filter(lambda x: x != "")
 ```
-## Step-3:- Process the data
+## Step-3: Process the data
 - In this step, we will pair up each word in file and count it as 1 as an intermediate Key-value pairs and we need to transform the words using reduceByKey() to get the total count of all distinct words. To get back to python, we use collect() and then print the obtained results.
 ```python
 adventuresPairsRDD = adventuresRemoveSpaceRDD.map(lambda eachWord: (eachWord,1))
@@ -66,7 +66,7 @@ print(results)
 output = sorted(results, key=lambda t: t[1], reverse=True)[:15]
 print(output)
 ```
-## Charting the data
+## Step-4: Charting the data
 * Display the data by ploting the obtained output, where we need to import the required libraries and then label the axis as per the requirement.  
 ```python
 import pandas as pd  
@@ -83,7 +83,15 @@ df = pd.DataFrame.from_records(output, columns =[ylabel, xlabel])
 plt.figure(figsize=(20,4))
 sns.barplot(xlabel, ylabel, data=df, palette="cubehelix").set_title(title)
 ```
-## Result 
+## Result:
 
 ![Output after processing the data](https://github.com/anshithavelagapudi/big-data-final-project/blob/main/output.PNG)
 ![Output after Charting the data](https://github.com/anshithavelagapudi/big-data-final-project/blob/main/chart.PNG)
+
+## References:
+
+- https://github.com/Rajeshwari-Rudra/bigData-finalProject
+- https://www.section.io/engineering-education/word-cloud/
+- https://sparkbyexamples.com/
+- https://stackoverflow.com/questions/41306684/get-top-5-largest-from-list-of-tuples-python/41306701
+- https://stackoverflow.com/questions/59240504/spark-python-reducebykey-then-find-top-10-most-frequent-words-and-frequencies
