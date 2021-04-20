@@ -85,5 +85,5 @@ sns.barplot(xlabel, ylabel, data=df, palette="cubehelix").set_title(title)
 ```
 ## Result 
 
-![Output after processing the data]()
-![Output after Charting the data]()
+![Output after processing the data](https://github.com/anshithavelagapudi/big-data-final-project/blob/main/output.PNG)
+![Output after Charting the data](https://github.com/anshithavelagapudi/big-data-final-project/blob/main/chart.PNG)
